@@ -23,6 +23,7 @@ The application is a simple event invitation site consisting of:
 - RSVP form behaviour.
 - Form validation and error messages.
 - Successful form submission.
+- Backend data persistence and retrieval (verifying that RSVP submissions are saved, updated, and loaded correctly).
 - Accessibility basics (keyboard navigation, alt text, colour contrast).
 - Cross-browser checks (Chrome, Safari, Firefox).
 - Mobile vs desktop display behaviour.
@@ -42,17 +43,21 @@ The application is a simple event invitation site consisting of:
 ## 5. Test Items
 Pages/components included:
 1. Landing Page
-   - Title, event name 
-   - Event date/time 
-   - Venue and address 
+   - Title
+   - Hero section
+   - Event details (date, time, venue, and address)
    - RSVP button
+   - Countdown section with time-based dynamic text
 2. RSVP Page
+   - Header
    1. Search Guest
       - Input fields: First name, last name
       - Search (Next) button
       - Error messages if any
+      - Display a confirmation prompt asking the guest if they want to edit their RSVP when an existing submission is found
    2. RSVP Form
       - Input fields: Attendance status (yes/no), accompanying guests(checking the box if the person attends), dietary restrictions, message
+      - Pre-populated fields when editing previous RSVP
       - Submit button
       - Error messages if any
 3. Confirmation State
