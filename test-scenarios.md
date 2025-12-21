@@ -1,0 +1,56 @@
+# Test Scenarios Document
+**Project:** Banquet Invitation<br>
+**Version:** 1.0.1<br>
+**Prepared by:** Kaho Shibuya<br>
+**Date:** 2025-12-08
+---
+## 1. Landing Page
+| Scenario ID | Test Scenario               | Expected Result                                                                                                                                                                                                     | Latest Result | Automated |
+|-------------|-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|-----------|
+| LP-01       | Verify page load            | The landing page loads correctly on all devices and browsers.                                                                                                                                                       | -             | No        |
+| LP-02       | Verify title & hero section | The page title and hero section display correctly.                                                                                                                                                                  | -             | No        |
+| LP-03       | Verify event details        | Date, time, venue, and address are correct and visible.                                                                                                                                                             | -             | No        |
+| LP-04       | Verify RSVP button          | The "RSVP" button appears and it navigates to the RSVP page.                                                                                                                                                        | -             | No        |
+| LP-05       | Verify countdown component  | Countdown section displays correct number of days remaining and dynamic text (e.g., “Looking forward to meeting you in...”, “Looking forward to meeting you tonight!”, “Thank you for coming to our celebration!”). | -             | No        |
+
+## 2. RSVP Page
+| Scenario ID | Test Scenario                                   | Expected Result                                                                                                                                                                                                 | Latest Result | Automated |
+|-------------|-------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|-----------|
+| RSVP-01     | Display the hero section throughout the process | The hero section including details of the event (date, time, schedule, venue) and the response deadline appears on every RSVP page. The "Map" link navigates to Google Maps prefilled the address of the venue. | -             | No        |
+
+### 2.1 Search Guest
+| Scenario ID | Test Scenario               | Expected Result                                                                                                                                                                                                       | Latest Result | Automated |
+|-------------|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|-----------|
+| RSVP-02     | Search existing guest       | It navigates to the RSVP form when valid first and last names are entered. <br> After the user clicks "Next", the button label temporarily changes to "Searching..." while the system communicates with the database. | -             | No        |
+| RSVP-03     | Go back to the landing page | The "Back" button navigates to the landing page.                                                                                                                                                                      | -             | No        |
+| RSVP-04     | Display confirmation prompt | If existing RSVP found, it displays the prompt to make sure if the user wants to edit the RSVP.                                                                                                                       | -             | No        |
+| RSVP-05     | Edit navigation             | By confirming to proceed to edit the existing RSVP, it navigates to pre-filled, editable form.                                                                                                                        | -             | No        |
+| RSVP-06     | Cancel navigation           | By canceling editing, it navigates back to the search guest page.                                                                                                                                                     | -             | No        |
+| RSVP-07     | Display confirmation prompt | If existing RSVP found, it displays the prompt to make sure if the user wants to edit the RSVP.                                                                                                                       | -             | No        |
+| RSVP-08     | Search non-existent guest   | It displays the message indicating that no matching guest was found in the database when an incorrect or non-existing name is submitted.                                                                              | -             | No        |
+| RSVP-09     | Search with empty inputs    | After the user clicks "Next", the error messages appear if any input field is left empty.                                                                                                                             | -             | No        |
+
+
+### 2.2 RSVP Form
+| Scenario ID | Test Scenario                                                     | Expected Result                                                                                                                                                                                                                                                                                               | Latest Result | Automated |
+|-------------|-------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|-----------|
+| RSVP-10     | Fill form with valid data                                         | Select one of the attendance options and submit successfully.<br>After the user clicks "Submit", the button label temporarily changes to "Submitting..." while the system communicates with the database. <br>The database is updated correctly.                                                              | -             | No        |
+| RSVP-11     | Validation of required fields                                     | When submitting the form without selecting any attendance option, the error message appears by the input.                                                                                                                                                                                                     | -             | No        |
+| RSVP-12     | Display accompanying guest(s)                                     | The "Joining with:" section is displayed and the accompanying guest's name(s) is shown. <br> The dietary restrictions section has each accompanying guest's input, and the label of the guest's input has "(Yourself)" along with their full name.                                                            | -             | No        |
+| RSVP-13     | Not Display accompanying guest                                    | The "Joining with:" section is not displayed. <br> The dietary restrictions sections only has the guest's input, and the label of input only shows the guest's full name.                                                                                                                                     | -             | No        |
+| RSVP-14     | Fill form for accompanying guest(s) who have *not* self-submitted | The accompanying guest's name(s) appears under the "Joining with:" section and the dietary restriction section, and each input is editable.                                                                                                                                                                   | -             | No        |
+| RSVP-15     | Fill form for accompanying guest(s) who have self-submitted       | The accompanying guest's name(s) appears under the "Joining with:" section and each checkbox is read-only. Under the name of accompanying guest, the caption "This person has already RSVP'd individually" appears. <br> The accompanying guest's input won't be shown under the dietary restriction section. | -             | No        |
+| RSVP-16     | Edit existing RSVP                                                | The previously submitted data is pre-populated and editable. <br>After the user clicks "Update", the button label temporarily changes to "Updating..." while the system communicates with the database. <br>The database is updated correctly.                                                                | -             | No        |
+
+## 3. Confirmation / Success Page
+| Scenario ID | Test Scenario                 | Expected Result                                                          | Latest Result | Automated |
+|-------------|-------------------------------|--------------------------------------------------------------------------|---------------|-----------|
+| CONF-01     | Display "thank you" message   | The "Thank You for Your RSVP!" is displayed with the confetti animation. | -             | No        |
+| CONF-02     | Returning to the landing page | There is a button "Back to Top Page" leading to the landing page.        | -             | No        |
+
+## 4. Cross-Functional / Miscellaneous
+| Scenario ID | Test Scenario               | Expected Result                                                      | Latest Result | Automated |
+|-------------|-----------------------------|----------------------------------------------------------------------|---------------|-----------|
+| XF-01       | Cross-browser compatibility | Confirm functionality and layout on Chrome, Safari, and Firefox.     | -             | No        |
+| XF-02       | Mobile and desktop          | Confirm layout and usability on iPhone and Macbook.                  | -             | No        |
+| XF-03       | Accessibility               | Keyboard navigation works; alt text and colour contrast are correct. | -             | No        |
