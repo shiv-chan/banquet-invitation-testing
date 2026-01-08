@@ -98,6 +98,6 @@ Testing is complete when:
 - Test Requirements Document (this file)
 - Test Scenarios
 - Test Cases
-- Test Execution Report
+- Test Execution Report(s)
 - Bug Report(s)
-- Issues and Observations
+- Test Summary
