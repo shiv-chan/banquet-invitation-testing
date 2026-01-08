@@ -6,10 +6,10 @@
 
 
 ## 1. Landing Page
-| Test Case ID | Related Scenario | Title                  | Preconditions                       | Steps                                                                | Test Data                                                 | Expected Result                                                 | 
-|--------------|------------------|------------------------|-------------------------------------|----------------------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------------|
-| TC-LP-01     | LP-01            | Verify page load & UI  | App is deployed; URL is accessible. | <ol><li>Open the browser.</li><li>Navigate to the app URL.</li></ol> | URL: https://kaho-and-jade-banquet-invitation.vercel.app/ | Page loads in < 3s. Title, Hero, and Event details are visible. |          
-| TC-LP-02     | LP-02            | RSVP button navigation | User is on the landing page.        | <ol><li>Locate the "RSVP" button.</li>Click the button.</li></ol>    | N/A                                                       | User is redirected to the Search Guest page.                    |          
+| Test Case ID | Related Scenario | Title                  | Preconditions                       | Steps                                                                 | Test Data                                                 | Expected Result                                                 | 
+|--------------|------------------|------------------------|-------------------------------------|-----------------------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------------|
+| TC-LP-01     | LP-01            | Verify page load & UI  | App is deployed; URL is accessible. | <ol><li>Open the browser.</li><li>Navigate to the app URL.</li></ol>  | URL: https://kaho-and-jade-banquet-invitation.vercel.app/ | Page loads in < 3s. Title, Hero, and Event details are visible. |          
+| TC-LP-02     | LP-02            | RSVP button navigation | User is on the landing page.        | <ol><li>Locate the "RSVP" button.</li><li>Click the button.</li></ol> | N/A                                                       | User is redirected to the Search Guest page.                    |          
 
 ## 2. RSVP Page
 
