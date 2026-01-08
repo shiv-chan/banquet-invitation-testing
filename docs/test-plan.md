@@ -1,4 +1,4 @@
-# Requirements Document
+# Test Plan
 **Project:** Banquet Invitation<br>
 **Version:** 1.0.1<br>
 **Prepared by:** Kaho Shibuya<br>
