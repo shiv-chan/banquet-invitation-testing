@@ -1,8 +1,8 @@
 # Test Scenarios Document
 **Project:** Banquet Invitation<br>
-**Version:** 1.0.1<br>
+**Version:** 2.0.1<br>
 **Prepared by:** Kaho Shibuya<br>
-**Date:** 2025-01-07
+**Date:** 2026-06-16
 
 ## Priority Definitions
 - **High (P0):** Application-breaking. RSVP flow cannot be completed.
@@ -10,44 +10,39 @@
 - **Low (P2):** Cosmetic or minor UI issues (e.g., confetti animation).
 
 ## 1. Landing Page
-| Scenario ID | Test Scenario                                  | Expected Result                                                                                              | Priority | Automated |
-|-------------|------------------------------------------------|--------------------------------------------------------------------------------------------------------------|----------|-----------|
-| LP-01       | **Smoke Test**: Verify page load & UI elements | Page loads in < 3s. Hero section, event details (date/time/address), and countdown are visible and correct.  | High     | Yes       |
-| LP-02       | Verify RSVP button & navigation                | & Navigation	Clicking the "RSVP" button successfully redirects the user to the Search Guest page.            | High     | Yes       |
+| Scenario ID | Test Scenario               | Expected Result                                         | Priority | 
+|-------------|-----------------------------|---------------------------------------------------------|----------|
+| LP-01       | User opens the landing page | Event information and countdown are displayed correctly | High     | 
+| LP-02       | User clicks RSVP button     | User is navigated to guest search page                  | High     | 
 
 ## 2. RSVP Page
-| Scenario ID | Test Scenario                             | Expected Result                                                                                                                                           | Priority | Automated |
-|-------------|-------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-----------|
-| RS-01       | **Global UI**: Persistent hero & map link | The Hero section (Date/Time/Venue) remains visible throughout the RSVP process. Clicking the "Map" link opens Google Maps with the correct venue address. | Medium   | No        | 
-
 ### 2.1 Search Guest
-| Scenario ID | Test Scenario                         | Expected Result                                                                                      | Priority | Automated |
-|-------------|---------------------------------------|------------------------------------------------------------------------------------------------------|----------|-----------|
-| RS-02       | **Happy Path**: Search existing guest | Navigates to the RSVP form.<br>Button label changes to "Searching..." during database communication. | High     | Yes       |
-| RS-03       | Search non-existent guest             | Displays the message that no matching guest was found in the database.                               | Medium   | Yes       |
-| RS-04       | Search with empty inputs              | Error messages appear if first or last name fields are submitted blank.                              | Medium   | Yes       |
-| RS-05       | Existing RSVP detection (Edit mode)   | If guest has already submitted, displays a prompt to edit or cancel.                                 | High     | No        |
-| RS-06       | **Navigation**: Back to Landing       | The "Back" button successfully returns the user to the landing page.                                 | Low      | No        |
-
+| Scenario ID | Test Scenario                          | Expected Result                                                 | Priority | 
+|-------------|----------------------------------------|-----------------------------------------------------------------|----------|
+| RS-01       | User accesses the guest search page    | Event information and guest search form are displayed correctly | High     | 
+| RS-02       | User searches for a valid guest        | User is taken to RSVP form                                      | High     | 
+| RS-03       | User searches for a non-existing guest | System shows "guest not found" state                            | Medium   | 
+| RS-04       | User submits empty search form         | Validation errors are displayed                                 | Medium   |
+| RS-05       | User accesses already-submitted guest  | System shows edit/update mode                                   | High     |
+| RS-06       | User navigates back to landing page    | User returns to landing page                                    | Low      |
 
 ### 2.2 RSVP Form
-| Scenario ID | Test Scenario                             | Expected Result                                                                                                                                                              | Priority | Automated |
-|-------------|-------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-----------|
-| FM-01       | **Happy Path**: Valid data submission     | User selects attendance; clicking "Submit" updates the database and redirects to the Success page.<br>Button label changes to "Submitting..." during database communication. | High     | Yes       |
-| FM-02       | Required fields validation                | Cannot submit without selecting an attendance option (Inline error message appears).                                                                                         | High     | Yes       |
-| FM-03       | Accompanying guests display logic         | If applicable, "Joining with:" section displays names and relevant dietary inputs.                                                                                           | Medium   | No        |
-| FM-04       | Read-only state for self-submitted guests | If an accompanying guest already RSVP'd individually, their checkbox is read-only with an informative caption.                                                               | High     | No        |
-| FM-05       | Update existing RSVP                      | Previously submitted data is pre-populated and successfully updated in the database.<br>Button label changes to "Updating..." during database communication.                 | Medium   | No        |
+| Scenario ID | Test Scenario                             | Expected Result                                           | Priority | 
+|-------------|-------------------------------------------|-----------------------------------------------------------|----------|
+| FM-01       | User submits a new RSVP                   | RSVP is successfully recorded                             | High     | 
+| FM-02       | User submits without required fields      | System prevents submission and displays validation errors | High     | 
+| FM-03       | User manages accompanying guests (if any) | Group members are displayed and handled correctly         | High     | 
+| FM-04       | User updates existing RSVP                | Previous data is updated successfully                     | Medium   | 
 
 ## 3. Confirmation / Success Page
-| Scenario ID | Test Scenario                   | Expected Result                                                           | Priority | Automated |
-|-------------|---------------------------------|---------------------------------------------------------------------------|----------|-----------|
-| CF-01       | Success UI & animation          | "Thank You" message and confetti animation trigger upon successful POST.  | Low      | No        |
-| CF-02       | **Navigation**: Back to Landing | The "Back to Top Page" successfully returns the user to the landing page. | Low      | No        |
+| Scenario ID | Test Scenario                        | Expected Result                     | Priority | 
+|-------------|--------------------------------------|-------------------------------------|----------|
+| CF-01       | User completes RSVP submission       | Confirmation message is displayed   | Low      |
+| CF-02       | User navigates back to landing page  | User is redirected to landing page  | Low      |
 
 ## 4. Cross-Functional / Miscellaneous
-| Scenario ID | Test Scenario               | Expected Result                                                              | Priority | Automated |
-|-------------|-----------------------------|------------------------------------------------------------------------------|----------|-----------|
-| XF-01       | Cross-browser compatibility | Core RSVP flow works consistently on Chrome, Safari, and Firefox             | High     | No        |
-| XF-02       | Responsive design           | Confirm layout and usability on Mobile (iPhone) and Desktop (Macbook).       | High     | No        |
-| XF-03       | Accessibility (A11y)        | Keyboard navigation works; alt text and colour contrast meet basic standard. | Medium   | No        |
+| Scenario ID | Test Scenario                                            | Expected Result                                                     | Priority |
+|-------------|----------------------------------------------------------|---------------------------------------------------------------------|----------|
+| XF-01       | User completes the RSVP flow in supported browsers       | Core RSVP flow functions correctly in Chromium, Firefox, and WebKit | High     | 
+| XF-02       | User accesses the application on different screen sizes  | Layout remains usable and readable on mobile and desktop devices    | High     | 
+| XF-03       | User navigates via keyboard                              | App is accessible via keyboard navigation                           | Medium   | 
