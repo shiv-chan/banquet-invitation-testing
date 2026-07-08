@@ -1,0 +1,17 @@
+{
+  "name": "banquet-invitation-testing",
+  "version": "1.0.0",
+  "description": "## Overview This repository contains the full Quality Assurance lifecycle for the **Banquet Invitation** web application. It demonstrates a professional approach to manual and automated testing, covering everything from requirement analysis to bug reporting.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.0.1"
+  }
+}

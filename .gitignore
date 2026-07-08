@@ -1,1 +1,12 @@
 .idea
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+execution-reports/html
+execution-reports/junit
+execution-reports/test-results
