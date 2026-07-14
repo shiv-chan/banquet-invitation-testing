@@ -10,3 +10,4 @@ node_modules/
 execution-reports/html
 execution-reports/junit
 execution-reports/test-results
+automation/tests/*.ts-snapshots/
