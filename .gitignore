@@ -1,5 +1,8 @@
 .idea
 
+# local env files
+.env
+
 # Playwright
 node_modules/
 /test-results/
