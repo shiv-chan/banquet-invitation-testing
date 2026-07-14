@@ -94,9 +94,10 @@ This project follows a Risk-Based Testing (RBT) approach.
 
 ### 9-1. Entry Criteria
 Testing can begin when:
-- The build is deployed and accessible via the URL.
+- The application is deployed to the test environment and is accessible via the test URL.
+- The test database is initialized with the required test data.
 - All required UI components are visible.
-- Form submission endpoint is active.
+- The test environment is stable and available.
 
 ### 9-2. Exit Criteria
 Testing is complete when:
