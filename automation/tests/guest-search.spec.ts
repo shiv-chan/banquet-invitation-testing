@@ -1,5 +1,9 @@
 import { test, expect } from '../fixtures/test';
 
+test.beforeAll('Setting up test database', async ({ seedDatabase }) => {
+    console.log('Setting up test database');
+});
+
 test("TC-RS-01: Verify the guest search page loads", async ({ page, rsvpPage }) => {
     // check for the layout shift
     await expect(page).toHaveScreenshot('rsvp-page.png');
