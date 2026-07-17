@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../fixtures/test';
 
 test("TC-LP-01: Verify the page load and key UI elements", async ({ page }) => {
     await page.goto('/');

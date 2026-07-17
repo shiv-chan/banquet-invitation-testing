@@ -63,9 +63,9 @@ test("TC-RS-07: Access an RSVP form for the guest with existing RSVP", async({ r
     await rsvpPage.confirmEditingRSVP();
 
     await expect(rsvpFormPage.acceptButton).toBeChecked();
-    await expect(await rsvpFormPage.getCheckboxByName('Rita Webb')).toBeChecked();
-    await expect(await rsvpFormPage.getDietaryRequirementsByName('Karla Webb')).toHaveValue('');
-    await expect(await rsvpFormPage.getDietaryRequirementsByName('Rita Webb')).toHaveValue('peanuts');
+    await expect(rsvpFormPage.getCheckboxByName('Rita Webb')).toBeChecked();
+    await expect(rsvpFormPage.getDietaryRestrictionByName('Karla Webb')).toHaveValue('');
+    await expect(rsvpFormPage.getDietaryRestrictionByName('Rita Webb')).toHaveValue('peanuts');
     await expect(rsvpFormPage.messageInput).toHaveValue('Congrats!');
 });
 
