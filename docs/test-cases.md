@@ -1,8 +1,8 @@
 # Test Cases Document
 **Project:** Banquet Invitation<br>
-**Version:** 2.0.1<br>
+**Version:** 2.0.2<br>
 **Prepared by:** Kaho Shibuya<br>
-**Date:** 2026-06-16<br>
+**Date:** 2026-07-17<br>
 
 ---
 
