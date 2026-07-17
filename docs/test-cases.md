@@ -202,7 +202,7 @@
 **Steps:**
 1. Search for existing guest
 2. Click Next
-3. Click Yup
+3. Confirm editing the existing RSVP to proceed to the form
 
 **Test Data:**
 - First Name: Karla
@@ -212,7 +212,8 @@
 - The confirmation for editing RSVP is displayed
 - Previous RSVP data is pre-filled in the form:
     - Attendance: Joyfully Accept
-    - Joining with: Rita Webb
+    - Joining with: 
+      - Rita Webb: (checked)
     - Dietary Restrictions: empty for Karla and "peanuts" for Rita
     - Message: Congrats!
 
@@ -258,7 +259,7 @@
 1. Confirm the success message
 2. Navigate back to the guest search page
 3. Search for the guest again: "Pat Sharp"
-4. Click Yup
+4. Confirm editing the existing RSVP to proceed to the form
 5. Verify previously submitted values are pre-populated
 
 **Test Data:**
@@ -269,6 +270,8 @@
 
 **Expected Result:**
 - User is redirected to the thank-you page
+- "Joining with" is not visible
+- Dietary Restriction has only one field for the guest
 - When the guest accesses the RSVP form again:
   - Attendance selects "Joyfully Accept"
   - Dietary Restriction contains "Lactose Intolerant"
@@ -297,13 +300,14 @@
 1. Confirm the success message
 2. Navigate back to the guest search page
 3. Search for the guest again: "Felecia Gillespie"
-4. Click Yup
+4. Confirm editing the existing RSVP to proceed to the form
 5. Verify previously submitted values are pre-populated
 
 **Test Data:**
 - Guest: Felecia Gillespie
 - Attendance: "Joyfully Accept"
-- Joining with: "Cecile Weeks"
+- Joining with: 
+  - Cecile Weeks: (checked)
 
 **Expected Result:**
 - User is redirected to the thank-you page
@@ -317,7 +321,7 @@
 
 ---
 
-### TC-FM-03 — Required field validation
+### TC-FM-02 — Required field validation
 **Related Scenario:** FM-02
 
 **Preconditions:** 
@@ -342,7 +346,7 @@
 
 ---
 
-### TC-FM-04-A — Read-only state for self-submitted accompanying guest
+### TC-FM-03-A — Read-only state for self-submitted accompanying guest
 **Related Scenario:** FM-03
 
 **Preconditions:**
@@ -352,31 +356,29 @@
   
 **Steps:**
 1. Search for the guest: "Beth Ramirez"
-2. Click Yup
+2. Confirm editing the existing RSVP to proceed to the form
 3. Observe accompanying guest RSVP controls
 4. Attempt to modify accompanying guest attendance
-5. Attempt to modify accompanying guest dietary restriction
 
 **Test Data:**
 - Guest: Beth Ramirez
 - Attendance: "Joyfully Accept"
 - Joining with:
-  - Bernardo Sims: "Joyfully Accept"
+  - Bernardo Sims: (checked)
 - Dietary Restrictions:
   - Beth Ramirez: (empty)
-  - Bernardo Sims: "crabs"
 - Message: "Happy for you!!"
 
 **Expected Result:**
 - Accompanying guest attendance control is disabled
-- Accompanying guest dietary restrictions field is disabled
+- Accompanying guest's dietary restrictions field is invisible
 - Informational message is displayed indicating the guest has already RSVP'd individually.
 
 **Automated:** Yes
 
 ---
 
-### TC-FM-04-B — Immutable RSVP fields should not change via from submission
+### TC-FM-03-B — Immutable RSVP fields should not change via from submission
 **Related Scenario:** FM-03
 
 **Preconditions:** 
@@ -390,14 +392,14 @@
 
 **Update Steps:**
 1. Search for the guest: "Beth Ramirez"
-2. Click Yup
-3. Verify that accompanying guest attendance and dietary restrictions are not editable
+2. Confirm editing the existing RSVP to proceed to the form
+3. Verify that accompanying guest attendance is not editable and the dietary restrictions field is invisible
 4. Do not modify any values
 5. Click Update
 
 **Verification Steps:**
 1. Search for the guest: "Bernardo Sims"
-2. Click Yup
+2. Confirm editing the existing RSVP to proceed to the form
 3. Verify that accompanying guest attendance and dietary restrictions remain unchanged
 4. Verify that the message is the one Bernardo Sims submitted, not the one Beth Ramirez submitted
 
@@ -405,32 +407,31 @@
 - Guest: Beth Ramirez
 - Attendance: "Joyfully Accept"
 - Joining with:
-  - Bernardo Sims: "Joyfully Accept"
+  - Bernardo Sims: (checked)
 - Dietary Restrictions:
   - Beth Ramirez: (empty)
-  - Bernardo Sims: "crabs"
 - Message: "Happy for you!!"
 
 **Test Data for Verification:**
 - Guest: Bernardo Sims
-- Attendance:
-  - Bernardo Sims: "Joyfully Accept"
-  - Beth Ramirez: "Joyfully Accept"
+- Attendance: "Joyfully Accept"
+  Joining with:
+  - Beth Ramirez: (checked)
 - Dietary Restrictions:
   - Bernardo Sims: "crabs"
-  - Beth Ramirez: (empty)
 - Message: "Congratulations 🫶"
 
 **Expected Result:**
 - Already submitted guests are non-editable
-- Read-only indicator is shown
+- Accompanying guest's dietary restrictions field is invisible
+- Informational message is displayed indicating the guest has already RSVP'd individually.
 - All fields for the accompanying guest are unchanged after the update
 
 **Automated:** Yes
 
 ---
 
-### TC-FM-05 — Update existing RSVP
+### TC-FM-04 — Update existing RSVP
 **Related Scenario:** FM-04
 
 **Preconditions:** 
@@ -440,17 +441,17 @@
 
 **Update Steps:**
 1. Search for the guest: "Rita Webb"
-2. Click Yup
+2. Confirm editing the existing RSVP to proceed to the form
 3. Select the attendance option: "Regretfully Decline"
-4. Verify that the dietary restrictions field is invisible
+4. Verify that "Joining with" and the dietary restrictions field are invisible
 5. Enter the message field: "Sorry that I cannot make it!"
 6. Click Update
 
 **Verification Steps:**
 1. Search for the guest: "Rita Webb"
-2. Click Yup
+2. Confirm editing the existing RSVP to proceed to the form
 3. Verify that the attendance is pre-populated as "Regretfully Decline"
-4. Verify that the dietary restrictions field is hidden
+4. Verify that "Joining with" and the dietary restrictions field are invisible
 5. Verify that the message field contains "Sorry that I cannot make it!"
 
 **Test Data before update:**
@@ -469,6 +470,7 @@
 - Update is successfully saved
 - When the guest accesses the RSVP form again:
   - Attendance is pre-populated as "Regretfully Decline"
+  - "Joining with" field is hidden
   - Dietary Restrictions field is hidden
   - Message contains "Sorry that I cannot make it!"
 
