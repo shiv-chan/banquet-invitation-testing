@@ -44,16 +44,11 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'setup db',
-      testMatch: /global\.setup\.ts/,
-    },
-    {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
         viewport: { width: 1470, height: 832 },
       },
-      dependencies: ['setup db'],
     },
 
     {
@@ -62,7 +57,6 @@ export default defineConfig({
         ...devices['Desktop Firefox'] ,
         viewport: { width: 1470, height: 788 },
       },
-      dependencies: ['setup db'],
     },
 
     {
@@ -71,7 +65,6 @@ export default defineConfig({
         ...devices['Desktop Safari'] ,
         viewport: { width: 1470, height: 868 },
       },
-      dependencies: ['setup db'],
     },
   ],
 });
