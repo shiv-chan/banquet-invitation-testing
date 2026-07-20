@@ -1,8 +1,8 @@
 # Test Plan
 **Project:** Banquet Invitation<br>
-**Version:** 2.0.1<br>
+**Version:** 2.1.1<br>
 **Prepared by:** Kaho Shibuya<br>
-**Date:** 2026-06-16
+**Date:** 2026-07-17
 
 ---
 
@@ -83,10 +83,25 @@ This project follows a Risk-Based Testing (RBT) approach.
 ---
 
 ## 8. Test Environment
-- Chrome / Safari / Firefox (latest)
-- MacBook Air / iPhone 13
-- Production URL:
-  https://kaho-and-jade-banquet-invitation.vercel.app/
+### Application Environment
+- Local development environment
+- Application is executed locally using Next.js development server
+
+### Browser
+- Chrome (latest)
+- Safari (latest)
+- Firefox (latest)
+
+### Devices
+- MacBook Air
+- iPhone 13
+
+### Application URL
+- Local URL: http://localhost:3000
+
+### Database
+- Local test database
+- Seeded with predefined test data required for test execution
 
 ---
 
@@ -94,7 +109,7 @@ This project follows a Risk-Based Testing (RBT) approach.
 
 ### 9-1. Entry Criteria
 Testing can begin when:
-- The application is deployed to the test environment and is accessible via the test URL.
+- The application can be started successfully in the local test environment.
 - The test database is initialized with the required test data.
 - All required UI components are visible.
 - The test environment is stable and available.
@@ -102,5 +117,5 @@ Testing can begin when:
 ### 9-2. Exit Criteria
 Testing is complete when:
 - All high-priority test cases are executed.
-- All critical and major defects are fixed or workarounds exist.
+- All critical and major defects identified during testing are fixed or have documented workarounds.
 - Test results are documented.
