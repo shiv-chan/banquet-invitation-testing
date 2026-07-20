@@ -25,7 +25,7 @@ See [docs/test-plan.md](./docs/test-plan.md)
 See [docs/test-cases.md](./docs/test-cases.md)
 
 ## Automation
-Playwright smoke tests under [/automation](./automation)
+Playwright automated tests under [/automation](./automation)
 
 ## Execution Reports
 See [execution-reports](./execution-reports)
