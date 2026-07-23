@@ -4,7 +4,7 @@ test.beforeAll('Setting up test database', async ({ seedDatabase }) => {
     console.log('Setting up test database');
 });
 
-test('TC-FM-01-A: Solo guest submits a new RSVP', async ({ rsvpPage, rsvpFormPage, thankYouPage }) => {
+test('TC-FM-01-A: Solo guest submits a new RSVP', async ({ page, rsvpPage, rsvpFormPage, thankYouPage }) => {
     // submission steps
     await rsvpPage.searchGuest('Pat', 'Sharp');
     await rsvpFormPage.acceptButton.check();
@@ -14,6 +14,7 @@ test('TC-FM-01-A: Solo guest submits a new RSVP', async ({ rsvpPage, rsvpFormPag
 
     // validation steps
     await thankYouPage.confirmSuccessfulSubmission();
+    await page.screenshot({ fullPage: true, path: 'evidence/automation/TC-FM-01-A-successful-submission.png' });
     await rsvpPage.goto();
     await rsvpPage.searchGuest('Pat', 'Sharp');
     await rsvpPage.confirmEditingRSVP();
@@ -22,6 +23,7 @@ test('TC-FM-01-A: Solo guest submits a new RSVP', async ({ rsvpPage, rsvpFormPag
     await expect(rsvpFormPage.guestDietaryRestrictionSection.locator('div')).toHaveCount(1);
     await expect(rsvpFormPage.getDietaryRestriction()).toHaveValue('Lactose Intolerant');
     await expect(rsvpFormPage.messageInput).toHaveValue('Can\'t wait to see you!🤍');
+    await page.screenshot({ fullPage: true, path: 'evidence/automation/TC-FM-01-A-after-submission.png' });
 });
 
 test('TC-FM-01-B: Guest with accompanying guests submits a new RSVP', async ({ rsvpPage, rsvpFormPage, thankYouPage }) => {
@@ -84,6 +86,7 @@ test('TC-FM-03-B: Immutable RSVP fields should not change via from submission', 
         timeout: 1000,
     })).rejects.toThrowError();
     await expect(rsvpFormPage.getDietaryRestrictionByName('Bernardo Sims')).toBeHidden();
+    await page.screenshot({ fullPage: true, path: 'evidence/automation/TC-FM-03-B-before-update.png' });
     await rsvpFormPage.submitForm();
     await thankYouPage.confirmSuccessfulSubmission();
 
@@ -102,6 +105,7 @@ test('TC-FM-03-B: Immutable RSVP fields should not change via from submission', 
     await expect(rsvpFormPage.getDietaryRestrictionByName('Bernardo Sims')).toHaveValue('crabs');
     await expect(rsvpFormPage.getDietaryRestrictionByName('Beth Ramirez')).toBeHidden();
     await expect(rsvpFormPage.messageInput).toHaveValue('Congratulations 🫶');
+    await page.screenshot({ fullPage: true, path: 'evidence/automation/TC-FM-03-B-after-update.png' });
 });
 
 test('TC-FM-04: Update existing RSVP', async({ rsvpPage, rsvpFormPage, thankYouPage }) => {

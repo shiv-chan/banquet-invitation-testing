@@ -600,7 +600,7 @@
 5. Use `tab` to focus on last name input field
 6. Enter: "Lane"
 7. Use `tab` to focus on the Submit button and hit `enter` to proceed to the RSVP form
-8. Use `tab` to focus on the attendance option: "Joyfully Accept" and hit `enter` to select
+8. Use `tab` to focus on the attendance option: "Joyfully Accept" and hit `spacebar` to select
 9. Use `tab` and navigate to Submit button and hit `enter` to submit the RSVP form
 10. On the thank-you page, use `tab` to navigate to the back button and hit `enter` to return to the landing page
  
