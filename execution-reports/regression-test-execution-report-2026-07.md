@@ -116,7 +116,7 @@ The automated regression tests covered:
 No defects were identified during this test execution.
 
 Previously reported defect:
-- BUG-001 – Read-only accompanying guest data is overwritten during RSVP update. (Verified as Fixed)
+- [BUG-001 – Read-only accompanying guest data is overwritten during RSVP update](/bug-reports/BUG-001-read-only-accompanying-guest-data-overwritten.md) (Verified as Fixed)
 
 ## Evidence
 - [Playwright HTML Report](/evidence/automation/playwright-reports/)
