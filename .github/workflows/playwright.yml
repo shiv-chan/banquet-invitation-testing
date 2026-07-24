@@ -46,8 +46,8 @@ jobs:
 
         - name: Run Playwright tests
           run: |
-            npx playwright test --project=chromium \
-            npx playwright test --project=firefox \
+            npx playwright test --project=chromium
+            npx playwright test --project=firefox
             npx playwright test --project=webkit
 
         - name: Upload Playwright reports
