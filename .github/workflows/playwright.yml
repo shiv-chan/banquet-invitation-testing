@@ -22,9 +22,9 @@ jobs:
             docker container run -d \
             --name banquet-app \
             -p 127.0.0.1:3000:3000 \
-            -e DATABASE_URL=${{ secrets.DATABASE_URL }} \
-            -e ALLOW_DB_RESET=${{ secrets.ALLOW_DB_RESET }} \
-            -e TEST_SECRET=${{ secrets.TEST_SECRET }} \
+            -e DATABASE_URL="${{ secrets.DATABASE_URL }}" \
+            -e ALLOW_DB_RESET="${{ secrets.ALLOW_DB_RESET }}" \
+            -e TEST_SECRET="${{ secrets.TEST_SECRET }}" \
             ${{ vars.DOCKERHUB_USERNAME }}/banquet
 
         - name: Wait for app
