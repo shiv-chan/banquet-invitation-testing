@@ -42,10 +42,19 @@ jobs:
         - name: Install dependencies
           run: npm ci
 
-        - name: Run Playwright tests
+        - name: Run Chromium tests
           run: |
+            PLAYWRIGHT_REPORTER_OUTPUT_DIR=execution-reports/chromium/ \
             npx playwright test --project=chromium
+
+        - name: Run Firefox tests
+          run: |
+            PLAYWRIGHT_REPORTER_OUTPUT_DIR=execution-reports/firefox/ \
             npx playwright test --project=firefox
+
+        - name: Run Webkit tests
+          run: |
+            PLAYWRIGHT_REPORTER_OUTPUT_DIR=execution-reports/webkit/ \
             npx playwright test --project=webkit
 
         - name: Upload Playwright reports
@@ -54,8 +63,9 @@ jobs:
           with:
             name: execution-reports
             path: |
-             execution-reports/html
-             execution-reports/junit
+              execution-reports/chromium
+              execution-reports/firefox
+              execution-reports/webkit
             retention-days: 90
 
         - name: Collect Docker logs
