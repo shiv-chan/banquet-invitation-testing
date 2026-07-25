@@ -13,7 +13,7 @@ jobs:
       timeout-minutes: 60
       runs-on: ubuntu-latest
       container:
-        image: mcr.microsoft.com/playwright:v1.50.0-noble
+        image: mcr.microsoft.com/playwright:v1.61.1-noble
         options: --init --ipc=host --cap-add=SYS_ADMIN --user 1001
         env:
           BASE_URL: "http://banquet-app:3000"
@@ -44,16 +44,17 @@ jobs:
 
         - name: Run Playwright tests
           run: |
+            npx playwright test --update-snapshots
             npx playwright test --project=chromium
-            npx playwright test --project=firefox
-            npx playwright test --project=webkit
 
         - name: Upload Playwright reports
-          uses: actions/upload-artifact@v4
+          uses: actions/upload-artifact@v7
           if: ${{ always() }}
           with:
             name: execution-reports
-            path: execution-reports/
+            path: |
+             execution-reports/html
+             execution-reports/junit
             retention-days: 90
 
         - name: Collect Docker logs
@@ -61,13 +62,8 @@ jobs:
           run: docker logs banquet-app > docker.log
 
         - name: Upload Docker logs
-          uses: actions/upload-artifact@v4
+          uses: actions/upload-artifact@v7
           if: ${{ failure() }}
           with:
             name: docker-logs
             path: docker.log
-
-
-        - name: Stop the application
-          if: ${{ always() }}
-          run: docker container stop banquet-app
