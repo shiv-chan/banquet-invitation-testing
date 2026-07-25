@@ -32,7 +32,7 @@ jobs:
           run: npx wait-on http://banquet-app:3000
 
         - name: Checkout repository
-          uses: actions/checkout@v2
+          uses: actions/checkout@v7
 
         - name: Set up Node.js
           uses: actions/setup-node@v7
@@ -44,17 +44,20 @@ jobs:
 
         - name: Run Chromium tests
           run: |
-            PLAYWRIGHT_REPORTER_OUTPUT_DIR=execution-reports/chromium/ \
+            PLAYWRIGHT_HTML_OUTPUT_DIR=execution-reports/chromium/ \
+            PLAYWRIGHT_JUNIT_OUTPUT_DIR=execution-reports/chromium/ \
             npx playwright test --project=chromium
 
         - name: Run Firefox tests
           run: |
-            PLAYWRIGHT_REPORTER_OUTPUT_DIR=execution-reports/firefox/ \
+            PLAYWRIGHT_HTML_OUTPUT_DIR=execution-reports/firefox/ \
+            PLAYWRIGHT_JUNIT_OUTPUT_DIR=execution-reports/firefox/ \
             npx playwright test --project=firefox
 
         - name: Run Webkit tests
           run: |
-            PLAYWRIGHT_REPORTER_OUTPUT_DIR=execution-reports/webkit/ \
+            PLAYWRIGHT_HTML_OUTPUT_DIR=execution-reports/webkit/ \
+            PLAYWRIGHT_JUNIT_OUTPUT_DIR=execution-reports/webkit/ \
             npx playwright test --project=webkit
 
         - name: Upload Playwright reports
