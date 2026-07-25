@@ -44,8 +44,10 @@ jobs:
 
         - name: Run Playwright tests
           run: |
-            npx playwright test --update-snapshots
+#            npx playwright test --update-snapshots
             npx playwright test --project=chromium
+            npx playwright test --project=firefox
+            npx playwright test --project=webkit
 
         - name: Upload Playwright reports
           uses: actions/upload-artifact@v7
