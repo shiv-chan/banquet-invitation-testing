@@ -12,23 +12,24 @@ jobs:
     run-playwright-tests:
       timeout-minutes: 60
       runs-on: ubuntu-latest
+      container:
+        image: mcr.microsoft.com/playwright:v1.62.0-noble
+        options: --init --ipc=host --cap-add=SYS_ADMIN --user 1001
+        env:
+          BASE_URL: "http://banquet-app:3000"
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
+      services:
+        banquet-app:
+          image: ${{ vars.DOCKERHUB_USERNAME }}/banquet:latest
+          ports:
+            - 3000:3000
+          env:
+            DATABASE_URL: ${{ secrets.DATABASE_URL }}
+            ALLOW_DB_RESET: ${{ secrets.ALLOW_DB_RESET }}
+            TEST_SECRET: ${{ secrets.TEST_SECRET }}
       steps:
-        - name: Pull the latest image from Docker Hub
-          run: |
-            docker pull ${{ vars.DOCKERHUB_USERNAME }}/banquet:latest
-
-        - name: Start the application locally
-          run: |
-            docker container run -d \
-            --name banquet-app \
-            -p 127.0.0.1:3000:3000 \
-            -e DATABASE_URL="${{ secrets.DATABASE_URL }}" \
-            -e ALLOW_DB_RESET=${{ secrets.ALLOW_DB_RESET }} \
-            -e TEST_SECRET=${{ secrets.TEST_SECRET }} \
-            ${{ vars.DOCKERHUB_USERNAME }}/banquet
-
         - name: Wait for app
-          run: npx wait-on http://localhost:3000
+          run: npx wait-on http://banquet-app:3000
 
         - name: Checkout repository
           uses: actions/checkout@v2
