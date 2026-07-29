@@ -19,7 +19,7 @@ jobs:
           TEST_SECRET: ${{ secrets.TEST_SECRET }}
       services:
         banquet-app:
-          image: ${{ vars.DOCKERHUB_USERNAME }}/banquet:latest
+          image: ${{ vars.DOCKERHUB_USERNAME }}/banquet:${{ github.event.client_payload.image_tag }}
           ports:
             - 3000:3000
           env:
