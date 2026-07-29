@@ -43,3 +43,31 @@ The automated suite focuses on high-value functional regression coverage, includ
 - Form validation
 - RSVP creation and update flows
 - Data persistence verification
+
+## CI Execution
+
+This project uses GitHub Actions to automatically execute Playwright E2E tests.
+
+The CI pipeline flow:
+```mermaid
+flowchart LR
+    A1(Application gets updated in the test branch) --> B(Builds and pushes the application Docker image)
+    A2(QA tests get updated in main branch ) --> C
+    B --> C(Triggers the QA repository workflow)
+    C --> D(Starts the application test environment using Docker)
+    D --> E(Runs Playwright regression tests)
+    E --> F(Uploads Playwright test reports as GitHub Actions artifacts)
+    
+
+```
+
+## Test Reports
+
+Playwright HTML reports are uploaded as GitHub Actions artifacts after each CI run.
+
+Test reports include:
+- HTML test reports
+- JUnit XML reports
+- Screenshots for failed tests
+- Docker logs for failed tests
+- Trace files for debugging when tests fail or get retries

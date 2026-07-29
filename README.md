@@ -27,6 +27,13 @@ See [docs/test-cases.md](./docs/test-cases.md)
 ## Automation
 Playwright automated tests under [/automation](./automation)
 
+The automation covers:
+- End-to-end user flows
+- Form validation
+- RSVP submission and update flows
+
+Automated tests are executed through GitHub Actions CI pipeline.
+
 ## Execution Reports
 See [execution-reports](./execution-reports)
 

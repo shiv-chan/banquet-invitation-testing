@@ -1,0 +1,82 @@
+name: Run Playwright Tests
+
+on:
+  push:
+    branches:
+      - main
+  repository_dispatch:
+    types: [app-updated]
+
+jobs:
+    run-playwright-tests:
+      timeout-minutes: 60
+      runs-on: ubuntu-latest
+      container:
+        image: mcr.microsoft.com/playwright:v1.61.1-noble
+        options: --init --ipc=host --cap-add=SYS_ADMIN --user 1001
+        env:
+          BASE_URL: "http://banquet-app:3000"
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
+      services:
+        banquet-app:
+          image: ${{ vars.DOCKERHUB_USERNAME }}/banquet:${{ github.event.client_payload.image_tag }}
+          ports:
+            - 3000:3000
+          env:
+            DATABASE_URL: ${{ secrets.DATABASE_URL }}
+            ALLOW_DB_RESET: ${{ secrets.ALLOW_DB_RESET }}
+            TEST_SECRET: ${{ secrets.TEST_SECRET }}
+      steps:
+        - name: Wait for app
+          run: npx wait-on http://banquet-app:3000
+
+        - name: Checkout repository
+          uses: actions/checkout@v7
+
+        - name: Set up Node.js
+          uses: actions/setup-node@v7
+          with:
+            node-version: lts/*
+
+        - name: Install dependencies
+          run: npm ci
+
+        - name: Run Chromium tests
+          run: |
+            PLAYWRIGHT_HTML_OUTPUT_DIR=execution-reports/chromium/ \
+            PLAYWRIGHT_JUNIT_OUTPUT_DIR=execution-reports/chromium/ \
+            npx playwright test --project=chromium
+
+        - name: Run Firefox tests
+          run: |
+            PLAYWRIGHT_HTML_OUTPUT_DIR=execution-reports/firefox/ \
+            PLAYWRIGHT_JUNIT_OUTPUT_DIR=execution-reports/firefox/ \
+            npx playwright test --project=firefox
+
+        - name: Run Webkit tests
+          run: |
+            PLAYWRIGHT_HTML_OUTPUT_DIR=execution-reports/webkit/ \
+            PLAYWRIGHT_JUNIT_OUTPUT_DIR=execution-reports/webkit/ \
+            npx playwright test --project=webkit
+
+        - name: Upload Playwright reports
+          uses: actions/upload-artifact@v7
+          if: ${{ always() }}
+          with:
+            name: execution-reports
+            path: |
+              execution-reports/chromium
+              execution-reports/firefox
+              execution-reports/webkit
+            retention-days: 90
+
+        - name: Collect Docker logs
+          if: ${{ failure() }}
+          run: docker logs banquet-app > docker.log
+
+        - name: Upload Docker logs
+          uses: actions/upload-artifact@v7
+          if: ${{ failure() }}
+          with:
+            name: docker-logs
+            path: docker.log
