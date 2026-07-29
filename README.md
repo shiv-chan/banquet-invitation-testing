@@ -1,4 +1,5 @@
 # 💌 Banquet Invitation - QA Testing Project
+[![Run Playwright Tests](https://github.com/shiv-chan/banquet-invitation-testing/actions/workflows/playwright.yml/badge.svg)](https://github.com/shiv-chan/banquet-invitation-testing/actions/workflows/playwright.yml)
 
 ## Overview
 This repository contains the full Quality Assurance lifecycle for the **Banquet Invitation** web application. It demonstrates a professional approach to manual and automated testing, covering everything from requirement analysis to bug reporting.
