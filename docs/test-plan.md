@@ -27,12 +27,14 @@ This project follows a Risk-Based Testing (RBT) approach.
 ### 3.1 Unit Testing
 - Form validation logic (Zod schemas)
 - Countdown logic
+
+### 3.2 Component Testing
 - Button pending state
 
-### 3.2 Integration Testing
+### 3.3 Integration Testing
 - RSVP submission → data persistence verification (optional)
 
-### 3.3 End-to-End Testing
+### 3.4 End-to-End Testing
 - Guest search flow
 - RSVP submission flow
 - Edit the existing RSVP flow
@@ -42,8 +44,8 @@ This project follows a Risk-Based Testing (RBT) approach.
 
 ## 4. Test Scope
 ### 4.1 In Scope
-- UI behavior and user flows
-- Form validation behavior
+- UI behaviour and user flows
+- Form validation behaviour
 - Navigation flows
 - Data persistence (via UI verification)
 - Accessibility basics
@@ -71,7 +73,7 @@ This project follows a Risk-Based Testing (RBT) approach.
 - Ensure users can successfully complete the RSVP flow
 - Ensure correct state handling for existing and new guests
 - Ensure the UI reflects the correct system state
-- Ensure consistent behavior across devices and browsers
+- Ensure consistent behaviour across devices and browsers
 
 ---
 
